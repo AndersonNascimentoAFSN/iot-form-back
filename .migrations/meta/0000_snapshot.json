@@ -1,5 +1,5 @@
 {
-  "id": "5156af0b-920e-4ec1-b99b-0440b021db57",
+  "id": "c8c84564-2e58-4044-8e16-a99dfa1c0cf0",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -112,7 +112,15 @@
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {
+        "participants_name_unique": {
+          "name": "participants_name_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "name"
+          ]
+        }
+      }
     }
   },
   "enums": {},

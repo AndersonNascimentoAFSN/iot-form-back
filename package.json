@@ -12,7 +12,8 @@
     "prepare": "husky",
     "deploy": "npm run build && npx drizzle-kit generate && npx drizzle-kit migrate",
     "drizzle:generate": "npx drizzle-kit generate",
-    "drizzle:migrate": "npx drizzle-kit migrate"
+    "drizzle:migrate": "npx drizzle-kit migrate",
+    "drizzle:studio": "npx drizzle-kit studio"
   },
   "keywords": [],
   "author": "Anderson Nascimento",

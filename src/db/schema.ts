@@ -15,7 +15,7 @@ export const participants = pgTable('participants', {
   id: text('id')
     .primaryKey()
     .$defaultFn(() => createId()),
-  name: varchar('name', { length: 255 }).notNull(),
+  name: varchar('name', { length: 255 }).notNull().unique(),
   dateOfBirth: date('birth_date').notNull(),
   gender: varchar('gender', { length: 10, enum: ['male', 'female', 'other'] }).notNull(),
   hasStudiedProgramming: boolean('has_studied_programming').notNull(),

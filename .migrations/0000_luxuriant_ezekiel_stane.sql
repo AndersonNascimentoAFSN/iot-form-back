@@ -13,7 +13,8 @@ CREATE TABLE IF NOT EXISTS "participants" (
 	"has_studied_programming" boolean NOT NULL,
 	"is_ufal_student" boolean NOT NULL,
 	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
-	"education_level_id" text NOT NULL
+	"education_level_id" text NOT NULL,
+	CONSTRAINT "participants_name_unique" UNIQUE("name")
 );
 --> statement-breakpoint
 DO $$ BEGIN

@@ -38,9 +38,9 @@ export async function createParticipant({
     })
     .returning()
 
-  const goal = result.at(0)
+  const participant = result.at(0)
 
   return {
-    goal,
+    participant,
   }
 }
