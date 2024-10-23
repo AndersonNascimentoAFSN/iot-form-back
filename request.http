@@ -1,0 +1,40 @@
+### Get para trazer todos os níveis de educação:
+GET http://localhost:3333/education-levels
+Content-Type: application/json
+
+### GET request para buscar todos os participantes
+GET http://localhost:3333/participants?limit=5&page=1
+Content-Type: application/json
+
+### POST request para criar um novo participante
+POST http://localhost:3333/participants
+Content-Type: application/json
+
+{
+  "name": "Anderson Felipe Silva do Nascimento",
+  "dateOfBirth": "1991-08-31",
+  "educationLevelId": "u2lq15k4cjnhcr7g2qn70ls6",
+  "gender": "male",
+  "hasStudiedProgramming": true,
+  "isUfalStudent": true
+}
+
+### POST request para completar uma meta
+POST http://localhost:3333/goal-completions
+Content-Type: application/json
+
+{
+  "goalId": "djpvshay60zimb4hjcdyq9ri"
+}
+
+### POST request para descompletar uma meta
+POST http://localhost:3333/undo-goal-completions
+Content-Type: application/json
+
+{
+  "goalCompletionId": "auyvwsb6sto20izjkrksfzmf"
+}
+
+### GET request para buscar ...
+GET http://localhost:3333/week-summary
+Content-Type: application/json
