@@ -9,11 +9,12 @@ import { env } from '../env'
 
 import fastifyCors from '@fastify/cors'
 
-import { getParticipantsRoute } from './routes/get-participants-route'
 import { createParticipantRoute } from './routes/create-participant-route'
+import { deleteParticipantRoute } from './routes/delete-participant-route'
+import { getDrawParticipantRoute } from './routes/draw-participant-route'
 import { getEducationLevelsRoute } from './routes/get-education-levels-route'
 import { getParticipantRoute } from './routes/get-participant-route'
-import { deleteParticipantRoute } from './routes/delete-participant-route'
+import { getParticipantsRoute } from './routes/get-participants-route'
 import { summaryParticipantsRoute } from './routes/summary-participants-route'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
@@ -32,6 +33,7 @@ app.register(createParticipantRoute)
 app.register(deleteParticipantRoute)
 app.register(getEducationLevelsRoute)
 app.register(summaryParticipantsRoute)
+app.register(getDrawParticipantRoute)
 
 app
   .listen({

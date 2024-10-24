@@ -1,4 +1,4 @@
-import { count, eq } from 'drizzle-orm'
+import { count, eq, sql } from 'drizzle-orm'
 import { db } from '../db'
 import { educationLevels, participants } from '../db/schema'
 
@@ -7,10 +7,15 @@ interface IFetchParticipants {
   limit: number
 }
 
-export async function fetchParticipants({ page = 1, limit = 10 }: IFetchParticipants) {
+export async function fetchParticipants({
+  page = 1,
+  limit = 10,
+}: IFetchParticipants) {
   const offset = (page - 1) * limit
 
-  const [{ count: total }] = await db.select({ count: count() }).from(participants)
+  const [{ count: total }] = await db
+    .select({ count: count() })
+    .from(participants)
 
   const data = await db
     .select({
@@ -22,6 +27,7 @@ export async function fetchParticipants({ page = 1, limit = 10 }: IFetchParticip
       isUfalStudent: participants.isUfalStudent,
       educationLevel: educationLevels.levelName,
       createdAt: participants.createdAt,
+      age: sql`EXTRACT(YEAR FROM AGE(${participants.dateOfBirth}))`.as('age'),
     })
     .from(participants)
     .innerJoin(

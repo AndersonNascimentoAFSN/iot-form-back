@@ -1,8 +1,11 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
-import { createParticipant, Gender } from '../../use-cases/create-participant'
+import { Gender, createParticipant } from '../../use-cases/create-participant'
 
-export const createParticipantRoute: FastifyPluginAsyncZod = async (app, _opts) => {
+export const createParticipantRoute: FastifyPluginAsyncZod = async (
+  app,
+  _opts
+) => {
   app.post(
     '/participants',
     {

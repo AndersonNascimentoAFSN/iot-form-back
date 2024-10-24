@@ -1,25 +1,24 @@
 import type { FastifyPluginAsyncZod } from 'fastify-type-provider-zod'
 import { z } from 'zod'
-import { fetchParticipants } from '../../use-cases/fetch-participants'
+import { drawParticipant } from '../../use-cases/draw-participants'
 
-export const getParticipantsRoute: FastifyPluginAsyncZod = async (
+export const getDrawParticipantRoute: FastifyPluginAsyncZod = async (
   app,
   _opts
 ) => {
   app.get(
-    '/participants',
+    '/draw-participant',
     {
       schema: {
         querystring: z.object({
-          page: z.coerce.number().default(1),
-          limit: z.coerce.number().default(10),
+          numberOfParticipants: z.coerce.number().default(1).optional(),
         }),
       },
     },
     async (request, reply) => {
       const { query } = request
 
-      const participants = await fetchParticipants(query)
+      const participants = await drawParticipant(query)
 
       reply.send(participants).code(200)
     }

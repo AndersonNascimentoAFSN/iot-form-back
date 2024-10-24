@@ -7,15 +7,15 @@ export enum Gender {
   OTHER = 'other',
 }
 
-export type GenderValues = (typeof Gender)[keyof typeof Gender];
+export type GenderValues = (typeof Gender)[keyof typeof Gender]
 
 interface CreateParticipantRequest {
   name: string
   dateOfBirth: string
-  gender: GenderValues,
-  hasStudiedProgramming: boolean,
-  isUfalStudent: boolean,
-  educationLevelId: string,
+  gender: GenderValues
+  hasStudiedProgramming: boolean
+  isUfalStudent: boolean
+  educationLevelId: string
 }
 
 export async function createParticipant({

@@ -1,4 +1,4 @@
-import { eq, or, sql, like } from 'drizzle-orm'
+import { eq, like, or, sql } from 'drizzle-orm'
 import { db } from '../db'
 import { educationLevels, participants } from '../db/schema'
 
@@ -18,6 +18,9 @@ export async function getParticipant({ name, uuid }: IFetchParticipants) {
       isUfalStudent: participants.isUfalStudent,
       educationLevel: educationLevels.levelName,
       createdAt: participants.createdAt,
+      age: sql`EXTRACT(YEAR FROM AGE(${participants.dateOfBirth}))`
+        .mapWith(Number)
+        .as('age'),
     })
     .from(participants)
     .innerJoin(
@@ -28,10 +31,10 @@ export async function getParticipant({ name, uuid }: IFetchParticipants) {
       or(
         // name ? like(participants.name, `%${name}%`) : sql`false`,
         name ? eq(participants.name, name) : sql`false`,
-        uuid ? eq(participants.id, uuid) : sql`false`,
+        uuid ? eq(participants.id, uuid) : sql`false`
       )
     )
-    .limit(1);
+    .limit(1)
 
   return {
     data,
@@ -39,7 +42,7 @@ export async function getParticipant({ name, uuid }: IFetchParticipants) {
       search: {
         name,
         uuid,
-      }
+      },
     },
   }
 }

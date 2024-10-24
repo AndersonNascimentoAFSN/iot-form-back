@@ -1,5 +1,12 @@
 import { createId } from '@paralleldrive/cuid2'
-import { pgTable, text, timestamp, date, varchar, boolean, } from 'drizzle-orm/pg-core'
+import {
+  boolean,
+  date,
+  pgTable,
+  text,
+  timestamp,
+  varchar,
+} from 'drizzle-orm/pg-core'
 
 export const educationLevels = pgTable('education_levels', {
   id: text('id')
@@ -9,7 +16,7 @@ export const educationLevels = pgTable('education_levels', {
   createdAt: timestamp('created_at', { withTimezone: true })
     .notNull() // withTimezone detalhe de fuso horário
     .defaultNow(),
-});
+})
 
 export const participants = pgTable('participants', {
   id: text('id')
@@ -17,7 +24,10 @@ export const participants = pgTable('participants', {
     .$defaultFn(() => createId()),
   name: varchar('name', { length: 255 }).notNull().unique(),
   dateOfBirth: date('birth_date').notNull(),
-  gender: varchar('gender', { length: 10, enum: ['male', 'female', 'other'] }).notNull(),
+  gender: varchar('gender', {
+    length: 10,
+    enum: ['male', 'female', 'other'],
+  }).notNull(),
   hasStudiedProgramming: boolean('has_studied_programming').notNull(),
   isUfalStudent: boolean('is_ufal_student').notNull(),
   createdAt: timestamp('created_at', { withTimezone: true })

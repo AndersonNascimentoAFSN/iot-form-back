@@ -1,4 +1,4 @@
-import { eq, or, sql } from 'drizzle-orm';
+import { eq, or, sql } from 'drizzle-orm'
 import { db } from '../db'
 import { participants } from '../db/schema'
 
@@ -16,7 +16,8 @@ export async function deleteParticipants({
     .where(
       or(
         name ? eq(participants.name, name) : sql`false`,
-        uuid ? eq(participants.id, uuid) : sql`false`,
+        uuid ? eq(participants.id, uuid) : sql`false`
       )
-    ).returning()
+    )
+    .returning()
 }

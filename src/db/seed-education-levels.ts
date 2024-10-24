@@ -1,11 +1,12 @@
 import { client, db } from './index'
-import { participants, educationLevels } from './schema'
+import { educationLevels, participants } from './schema'
+;(async function seed() {
+  await db.delete(participants)
+  await db.delete(educationLevels)
 
-  ; (async function seed() {
-    await db.delete(participants)
-    await db.delete(educationLevels)
-
-    await db.insert(educationLevels).values([
+  await db
+    .insert(educationLevels)
+    .values([
       { levelName: 'Ensino Fundamental (Completo)' },
       { levelName: 'Ensino Fundamental (Incompleto)' },
       { levelName: 'Ensino Médio (Completo)' },
@@ -19,6 +20,6 @@ import { participants, educationLevels } from './schema'
       { levelName: 'Doutorado' },
       { levelName: 'Outro' },
     ])
-      .returning()
-      .execute()
-  })().finally(() => client.end())
+    .returning()
+    .execute()
+})().finally(() => client.end())

@@ -1,3 +1,7 @@
+### GET request para sortear participante:
+GET http://localhost:3333/draw-participant
+Content-Type: application/json
+
 ### GET request para o summary de todos os participantes:
 GET http://localhost:3333/summary-participants
 Content-Type: application/json

@@ -35,9 +35,7 @@
         "education_levels_level_name_unique": {
           "name": "education_levels_level_name_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "level_name"
-          ]
+          "columns": ["level_name"]
         }
       }
     },
@@ -101,12 +99,8 @@
           "name": "participants_education_level_id_education_levels_id_fk",
           "tableFrom": "participants",
           "tableTo": "education_levels",
-          "columnsFrom": [
-            "education_level_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["education_level_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -116,9 +110,7 @@
         "participants_name_unique": {
           "name": "participants_name_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "name"
-          ]
+          "columns": ["name"]
         }
       }
     }
