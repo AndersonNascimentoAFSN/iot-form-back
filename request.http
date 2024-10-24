@@ -1,9 +1,17 @@
+### GET request para o summary de todos os participantes:
+GET http://localhost:3333/summary-participants
+Content-Type: application/json
+
 ### GET request para trazer todos os níveis de educação:
 GET http://localhost:3333/education-levels
 Content-Type: application/json
 
 ### GET request para buscar todos os participantes
 GET http://localhost:3333/participants?limit=5&page=1
+Content-Type: application/json
+
+### DELETE request para deletar um participante por nome ou uuid
+DELETE http://localhost:3333/participants?name=Anderson Nascimento
 Content-Type: application/json
 
 ### GET request para buscar um participante pelo name ou uuid

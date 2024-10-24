@@ -13,6 +13,8 @@ import { getParticipantsRoute } from './routes/get-participants-route'
 import { createParticipantRoute } from './routes/create-participant-route'
 import { getEducationLevelsRoute } from './routes/get-education-levels-route'
 import { getParticipantRoute } from './routes/get-participant-route'
+import { deleteParticipantRoute } from './routes/delete-participant-route'
+import { summaryParticipantsRoute } from './routes/summary-participants-route'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -27,7 +29,9 @@ app.setSerializerCompiler(serializerCompiler)
 app.register(getParticipantsRoute)
 app.register(getParticipantRoute)
 app.register(createParticipantRoute)
+app.register(deleteParticipantRoute)
 app.register(getEducationLevelsRoute)
+app.register(summaryParticipantsRoute)
 
 app
   .listen({
