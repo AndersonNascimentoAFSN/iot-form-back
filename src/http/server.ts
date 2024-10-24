@@ -12,6 +12,7 @@ import fastifyCors from '@fastify/cors'
 import { getParticipantsRoute } from './routes/get-participants-route'
 import { createParticipantRoute } from './routes/create-participant-route'
 import { getEducationLevelsRoute } from './routes/get-education-levels-route'
+import { getParticipantRoute } from './routes/get-participant-route'
 
 const app = fastify().withTypeProvider<ZodTypeProvider>()
 
@@ -24,6 +25,7 @@ app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
 
 app.register(getParticipantsRoute)
+app.register(getParticipantRoute)
 app.register(createParticipantRoute)
 app.register(getEducationLevelsRoute)
 

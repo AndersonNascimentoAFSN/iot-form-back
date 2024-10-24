@@ -6,6 +6,10 @@ Content-Type: application/json
 GET http://localhost:3333/participants?limit=5&page=1
 Content-Type: application/json
 
+### GET request para buscar um participante pelo name ou uuid
+GET http://localhost:3333/participant?name=Bruno
+Content-Type: application/json
+
 ### POST request para criar um novo participante
 POST http://localhost:3333/participants
 Content-Type: application/json
