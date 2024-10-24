@@ -13,7 +13,8 @@
     "deploy": "npm run build && npx drizzle-kit generate && npx drizzle-kit migrate",
     "drizzle:generate": "npx drizzle-kit generate",
     "drizzle:migrate": "npx drizzle-kit migrate",
-    "drizzle:studio": "npx drizzle-kit studio"
+    "drizzle:studio": "npx drizzle-kit studio",
+    "seed:prod": "tsx --env-file .env.prod src/db/seed-education-levels.ts"
   },
   "keywords": [],
   "author": "Anderson Nascimento",
